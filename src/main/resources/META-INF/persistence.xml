@@ -5,5 +5,19 @@
              version="3.0">
     <persistence-unit name="default">
 
+        <class>entity.Category</class>
+        <class>entity.DepartementManager</class>
+        <class>entity.Market</class>
+        <class>entity.MarketAdmin</class>
+        <class>entity.Promotion</class>
+        <class>entity.Subcategory</class>
+        <class>entity.SuperAdmin</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/akamarket"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="nopass"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
     </persistence-unit>
 </persistence>
