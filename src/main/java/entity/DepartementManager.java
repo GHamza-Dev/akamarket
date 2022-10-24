@@ -18,12 +18,9 @@ public class DepartementManager {
     @Basic
     @Column(name = "password", nullable = false, length = 50)
     private String password;
-    @Basic
-    @Column(name = "category_id", nullable = true)
-    private Integer categoryId;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category categoryByCategoryId;
+    private Category category;
 
     public int getId() {
         return id;
@@ -57,14 +54,6 @@ public class DepartementManager {
         this.password = password;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,7 +65,6 @@ public class DepartementManager {
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (categoryId != null ? !categoryId.equals(that.categoryId) : that.categoryId != null) return false;
 
         return true;
     }
@@ -87,15 +75,14 @@ public class DepartementManager {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (categoryId != null ? categoryId.hashCode() : 0);
         return result;
     }
 
-    public Category getCategoryByCategoryId() {
-        return categoryByCategoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryByCategoryId(Category categoryByCategoryId) {
-        this.categoryByCategoryId = categoryByCategoryId;
+    public void setCategory(Category categoryByCategoryId) {
+        this.category = categoryByCategoryId;
     }
 }

@@ -13,8 +13,8 @@ public class Market {
     @Basic
     @Column(name = "city", nullable = true, length = 50)
     private String city;
-    @OneToMany(mappedBy = "marketByMarketId")
-    private Collection<MarketAdmin> marketAdminsById;
+    @OneToOne(mappedBy = "market")
+    private MarketAdmin marketAdmin;
 
     public int getId() {
         return id;
@@ -52,11 +52,11 @@ public class Market {
         return result;
     }
 
-    public Collection<MarketAdmin> getMarketAdminsById() {
-        return marketAdminsById;
+    public MarketAdmin getMarketAdminsById() {
+        return marketAdmin;
     }
 
-    public void setMarketAdminsById(Collection<MarketAdmin> marketAdminsById) {
-        this.marketAdminsById = marketAdminsById;
+    public void setMarketAdminsById(MarketAdmin marketAdmin) {
+        this.marketAdmin = marketAdmin;
     }
 }

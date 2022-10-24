@@ -20,14 +20,11 @@ public class MarketAdmin {
     @Basic
     @Column(name = "password", nullable = false, length = 50)
     private String password;
-    @Basic
-    @Column(name = "market_id", nullable = true)
-    private Integer marketId;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "market_id", referencedColumnName = "id")
-    private Market marketByMarketId;
-    @OneToMany(mappedBy = "marketAdminByMarketAdmin")
-    private Collection<Promotion> promotionsById;
+    private Market market;
+    @OneToMany(mappedBy = "marketAdmin")
+    private Collection<Promotion> promotions;
 
     public int getId() {
         return id;
@@ -61,14 +58,6 @@ public class MarketAdmin {
         this.password = password;
     }
 
-    public Integer getMarketId() {
-        return marketId;
-    }
-
-    public void setMarketId(Integer marketId) {
-        this.marketId = marketId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,7 +69,6 @@ public class MarketAdmin {
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (marketId != null ? !marketId.equals(that.marketId) : that.marketId != null) return false;
 
         return true;
     }
@@ -91,23 +79,22 @@ public class MarketAdmin {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (marketId != null ? marketId.hashCode() : 0);
         return result;
     }
 
     public Market getMarketByMarketId() {
-        return marketByMarketId;
+        return market;
     }
 
-    public void setMarketByMarketId(Market marketByMarketId) {
-        this.marketByMarketId = marketByMarketId;
+    public void setMarketByMarketId(Market market) {
+        this.market = market;
     }
 
     public Collection<Promotion> getPromotionsById() {
-        return promotionsById;
+        return promotions;
     }
 
-    public void setPromotionsById(Collection<Promotion> promotionsById) {
-        this.promotionsById = promotionsById;
+    public void setPromotionsById(Collection<Promotion> promotions) {
+        this.promotions = promotions;
     }
 }

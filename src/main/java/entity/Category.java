@@ -13,12 +13,15 @@ public class Category {
     @Basic
     @Column(name = "category_name", nullable = true, length = 50)
     private String categoryName;
-    @OneToMany(mappedBy = "categoryByCategoryId")
-    private Collection<DepartementManager> departementManagersById;
-    @OneToMany(mappedBy = "categoryBySubCatId")
-    private Collection<Promotion> promotionsById;
-    @OneToMany(mappedBy = "categoryByCategoryId")
-    private Collection<Subcategory> subcategoriesById;
+    @ManyToOne
+    @JoinColumn(name = "parent_id", referencedColumnName = "id")
+    private Category parent;
+    @OneToMany(mappedBy = "parent")
+    private Collection<Category> categories;
+    @OneToOne(mappedBy = "category")
+    private DepartementManager departementManager;
+    @OneToMany(mappedBy = "category")
+    private Collection<Promotion> promotions;
 
     public int getId() {
         return id;
@@ -35,7 +38,6 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,27 +59,35 @@ public class Category {
         return result;
     }
 
-    public Collection<DepartementManager> getDepartementManagersById() {
-        return departementManagersById;
+    public Category getParent() {
+        return parent;
     }
 
-    public void setDepartementManagersById(Collection<DepartementManager> departementManagersById) {
-        this.departementManagersById = departementManagersById;
+    public void setParent(Category categoryByParentId) {
+        this.parent = categoryByParentId;
     }
 
-    public Collection<Promotion> getPromotionsById() {
-        return promotionsById;
+    public Collection<Category> getCategories() {
+        return categories;
     }
 
-    public void setPromotionsById(Collection<Promotion> promotionsById) {
-        this.promotionsById = promotionsById;
+    public void setCategories(Collection<Category> categoriesById) {
+        this.categories = categoriesById;
     }
 
-    public Collection<Subcategory> getSubcategoriesById() {
-        return subcategoriesById;
+    public DepartementManager getDepartementManagers() {
+        return departementManager;
     }
 
-    public void setSubcategoriesById(Collection<Subcategory> subcategoriesById) {
-        this.subcategoriesById = subcategoriesById;
+    public void setDepartementManagers(DepartementManager departementManager) {
+        this.departementManager = departementManager;
+    }
+
+    public Collection<Promotion> getPromotions() {
+        return promotions;
+    }
+
+    public void setPromotions(Collection<Promotion> promotionsById) {
+        this.promotions = promotionsById;
     }
 }

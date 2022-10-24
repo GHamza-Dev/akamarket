@@ -11,12 +11,6 @@ public class Promotion {
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "sub_cat_id", nullable = true)
-    private Integer subCatId;
-    @Basic
-    @Column(name = "market_admin", nullable = true)
-    private Integer marketAdmin;
-    @Basic
     @Column(name = "percentage", nullable = true, precision = 0)
     private Double percentage;
     @Basic
@@ -35,11 +29,11 @@ public class Promotion {
     @Column(name = "deptmanagercomment", nullable = true, length = 50)
     private String deptmanagercomment;
     @ManyToOne
-    @JoinColumn(name = "sub_cat_id", referencedColumnName = "id")
-    private Category categoryBySubCatId;
-    @ManyToOne
     @JoinColumn(name = "market_admin", referencedColumnName = "id")
-    private MarketAdmin marketAdminByMarketAdmin;
+    private MarketAdmin marketAdmin;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category category;
 
     public int getId() {
         return id;
@@ -47,22 +41,6 @@ public class Promotion {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Integer getSubCatId() {
-        return subCatId;
-    }
-
-    public void setSubCatId(Integer subCatId) {
-        this.subCatId = subCatId;
-    }
-
-    public Integer getMarketAdmin() {
-        return marketAdmin;
-    }
-
-    public void setMarketAdmin(Integer marketAdmin) {
-        this.marketAdmin = marketAdmin;
     }
 
     public Double getPercentage() {
@@ -121,9 +99,6 @@ public class Promotion {
         Promotion promotion = (Promotion) o;
 
         if (id != promotion.id) return false;
-        if (subCatId != null ? !subCatId.equals(promotion.subCatId) : promotion.subCatId != null) return false;
-        if (marketAdmin != null ? !marketAdmin.equals(promotion.marketAdmin) : promotion.marketAdmin != null)
-            return false;
         if (percentage != null ? !percentage.equals(promotion.percentage) : promotion.percentage != null) return false;
         if (loyaltyPts != null ? !loyaltyPts.equals(promotion.loyaltyPts) : promotion.loyaltyPts != null) return false;
         if (status != null ? !status.equals(promotion.status) : promotion.status != null) return false;
@@ -138,8 +113,6 @@ public class Promotion {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (subCatId != null ? subCatId.hashCode() : 0);
-        result = 31 * result + (marketAdmin != null ? marketAdmin.hashCode() : 0);
         result = 31 * result + (percentage != null ? percentage.hashCode() : 0);
         result = 31 * result + (loyaltyPts != null ? loyaltyPts.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
@@ -149,19 +122,19 @@ public class Promotion {
         return result;
     }
 
-    public Category getCategoryBySubCatId() {
-        return categoryBySubCatId;
+    public MarketAdmin getMarketAdmin() {
+        return marketAdmin;
     }
 
-    public void setCategoryBySubCatId(Category categoryBySubCatId) {
-        this.categoryBySubCatId = categoryBySubCatId;
+    public void setMarketAdmin(MarketAdmin marketAdminByMarketAdmin) {
+        this.marketAdmin = marketAdminByMarketAdmin;
     }
 
-    public MarketAdmin getMarketAdminByMarketAdmin() {
-        return marketAdminByMarketAdmin;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setMarketAdminByMarketAdmin(MarketAdmin marketAdminByMarketAdmin) {
-        this.marketAdminByMarketAdmin = marketAdminByMarketAdmin;
+    public void setCategory(Category categoryByCategoryId) {
+        this.category = categoryByCategoryId;
     }
 }
