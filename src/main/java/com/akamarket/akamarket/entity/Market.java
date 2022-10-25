@@ -1,8 +1,6 @@
-package entity;
+package com.akamarket.akamarket.entity;
 
 import jakarta.persistence.*;
-
-import java.util.Collection;
 
 @Entity
 public class Market {

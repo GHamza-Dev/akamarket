@@ -1,4 +1,4 @@
-package entity;
+package com.akamarket.akamarket.entity;
 
 import jakarta.persistence.*;
 

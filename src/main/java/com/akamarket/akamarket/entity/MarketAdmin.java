@@ -1,10 +1,12 @@
-package entity;
+package com.akamarket.akamarket.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
-@Table(name = "departement_manager", schema = "public", catalog = "akamarket")
-public class DepartementManager {
+@Table(name = "market_admin", schema = "public", catalog = "akamarket")
+public class MarketAdmin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -19,8 +21,10 @@ public class DepartementManager {
     @Column(name = "password", nullable = false, length = 50)
     private String password;
     @OneToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category category;
+    @JoinColumn(name = "market_id", referencedColumnName = "id")
+    private Market market;
+    @OneToMany(mappedBy = "marketAdmin")
+    private Collection<Promotion> promotions;
 
     public int getId() {
         return id;
@@ -59,7 +63,7 @@ public class DepartementManager {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DepartementManager that = (DepartementManager) o;
+        MarketAdmin that = (MarketAdmin) o;
 
         if (id != that.id) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
@@ -78,11 +82,19 @@ public class DepartementManager {
         return result;
     }
 
-    public Category getCategory() {
-        return category;
+    public Market getMarketByMarketId() {
+        return market;
     }
 
-    public void setCategory(Category categoryByCategoryId) {
-        this.category = categoryByCategoryId;
+    public void setMarketByMarketId(Market market) {
+        this.market = market;
+    }
+
+    public Collection<Promotion> getPromotionsById() {
+        return promotions;
+    }
+
+    public void setPromotionsById(Collection<Promotion> promotions) {
+        this.promotions = promotions;
     }
 }
