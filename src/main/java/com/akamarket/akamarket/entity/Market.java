@@ -50,11 +50,11 @@ public class Market {
         return result;
     }
 
-    public MarketAdmin getMarketAdminsById() {
+    public MarketAdmin getMarketAdmin() {
         return marketAdmin;
     }
 
-    public void setMarketAdminsById(MarketAdmin marketAdmin) {
+    public void setMarketAdmin(MarketAdmin marketAdmin) {
         this.marketAdmin = marketAdmin;
     }
 }

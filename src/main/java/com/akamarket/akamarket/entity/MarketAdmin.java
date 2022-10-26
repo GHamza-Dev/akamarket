@@ -82,19 +82,19 @@ public class MarketAdmin {
         return result;
     }
 
-    public Market getMarketByMarketId() {
+    public Market getMarket() {
         return market;
     }
 
-    public void setMarketByMarketId(Market market) {
+    public void setMarket(Market market) {
         this.market = market;
     }
 
-    public Collection<Promotion> getPromotionsById() {
+    public Collection<Promotion> getPromotions() {
         return promotions;
     }
 
-    public void setPromotionsById(Collection<Promotion> promotions) {
+    public void setPromotions(Collection<Promotion> promotions) {
         this.promotions = promotions;
     }
 }
