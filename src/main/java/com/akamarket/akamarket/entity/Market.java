@@ -2,6 +2,8 @@ package com.akamarket.akamarket.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Market {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +15,9 @@ public class Market {
     private String city;
     @OneToOne(mappedBy = "market")
     private MarketAdmin marketAdmin;
+
+    @OneToMany(mappedBy = "market")
+    private Collection<DepartementManager> departementManagers;
 
     public int getId() {
         return id;

@@ -22,6 +22,10 @@ public class DepartementManager {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "market_id", referencedColumnName = "id")
+    private Market market;
+
     public int getId() {
         return id;
     }
