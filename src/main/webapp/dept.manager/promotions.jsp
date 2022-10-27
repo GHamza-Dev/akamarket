@@ -1,6 +1,6 @@
 <%@ include file="/layout/header.jsp" %>
 <div>
-  <h1 class="text-xl underline">Market admin</h1>
+  <h1 class="text-xl underline">Dept Manager</h1>
   <table class="table-auto block">
     <thead>
     <tr class="bg-gray-100">

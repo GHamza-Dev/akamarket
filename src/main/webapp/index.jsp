@@ -17,7 +17,7 @@
     <input name="role" type="radio" value="mkt-admin">
     <br>
     <i>Dept manager</i>
-    <input name="role" type="radio" value="dept-manager">
+    <input name="role" type="radio" value="dept-admin">
     <br>
     <button>Submit</button>
 </form>
