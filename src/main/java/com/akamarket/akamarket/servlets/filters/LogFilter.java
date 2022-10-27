@@ -22,8 +22,9 @@ public class LogFilter implements Filter {
         System.out.println("Passed params:");
         int nbrOfParams = 0;
         while(enumeration.hasMoreElements()){
+            nbrOfParams++;
             String parameterName = (String) enumeration.nextElement();
-            System.out.println("\t["+nbrOfParams+"]"+ parameterName +" = "+ request.getParameter(parameterName));
+            System.out.println("\t["+nbrOfParams+"] "+ parameterName +" = "+ request.getParameter(parameterName));
         }
         filterChain.doFilter(request, response);
         System.out.println("[REQUEST END #"+nbrOfRequests+"]");
