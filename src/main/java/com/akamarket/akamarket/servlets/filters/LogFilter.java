@@ -1,4 +1,4 @@
-package com.akamarket.akamarket.servlets;
+package com.akamarket.akamarket.servlets.filters;
 
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
@@ -25,7 +25,6 @@ public class LogFilter implements Filter {
             String parameterName = (String) enumeration.nextElement();
             System.out.println("\t["+nbrOfParams+"]"+ parameterName +" = "+ request.getParameter(parameterName));
         }
-
         filterChain.doFilter(request, response);
         System.out.println("[REQUEST END #"+nbrOfRequests+"]");
     }
