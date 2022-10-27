@@ -24,7 +24,7 @@ public class AddPromotionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("categories",new CategoryDao().getAll());
-        request.getRequestDispatcher("/addpromotion.jsp").forward(request,response);
+        request.getRequestDispatcher("/market.admin/addpromotion.jsp").forward(request,response);
     }
 
     @Override

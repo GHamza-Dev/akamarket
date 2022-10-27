@@ -17,7 +17,7 @@ public class Promotion {
     @Column(name = "loyalty_pts", nullable = true)
     private Integer loyaltyPts;
     @Basic
-    @Column(name = "status", nullable = true, length = 30)
+    @Column(name = "status", nullable = false, length = 30)
     private String status;
     @Basic
     @Column(name = "created_at", nullable = true)

@@ -23,7 +23,7 @@ public class MarketAdmin {
     @OneToOne
     @JoinColumn(name = "market_id", referencedColumnName = "id")
     private Market market;
-    @OneToMany(mappedBy = "marketAdmin")
+    @OneToMany(mappedBy = "marketAdmin", fetch = FetchType.LAZY)
     private Collection<Promotion> promotions;
 
     public int getId() {

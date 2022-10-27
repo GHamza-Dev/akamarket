@@ -19,6 +19,7 @@ public class PromotionController {
         promotion.setLoyaltyPts(loyaltyPts);
         promotion.setAvUntile(avUntil);
         promotion.setCategory(category);
+        promotion.setStatus("not-treated");
 
         new PromotionDao().save(promotion);
     }

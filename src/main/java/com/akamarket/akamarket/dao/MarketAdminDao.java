@@ -23,7 +23,7 @@ public class MarketAdminDao implements Dao<MarketAdmin> {
 
     @Override
     public void save(MarketAdmin marketAdmin) {
-        JPA.wrap(em -> em.persist(marketAdmin));
+        JPA.wrap(entityManager -> entityManager.persist(marketAdmin));
     }
 
     @Override
