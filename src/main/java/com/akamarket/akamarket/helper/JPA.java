@@ -9,14 +9,13 @@ import java.util.function.Consumer;
 
 public class JPA {
     private static EntityManagerFactory emf;
-    private static EntityManager em;
 
     static {
         emf = Persistence.createEntityManagerFactory("default");
-        em = emf.createEntityManager();
     }
 
     public static void wrap(Consumer<EntityManager> action){
+        EntityManager em = entityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
@@ -25,6 +24,8 @@ public class JPA {
         }catch (RuntimeException re){
             tx.rollback();
             throw re;
+        }finally {
+            em.close();
         }
     }
 
@@ -33,6 +34,6 @@ public class JPA {
     }
 
     public static EntityManager entityManager() {
-        return em;
+        return emf.createEntityManager();
     }
 }
