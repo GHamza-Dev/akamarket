@@ -27,7 +27,7 @@ public class PromotionController {
 
         return promotions;
     }
-    public void addPromotion(MarketAdmin marketAdmin,int catId, Double percentage, int loyaltyPts, Date avUntil){
+    public void addPromotion(MarketAdmin marketAdmin,int catId, Double percentage, Date avUntil){
         Promotion promotion = new Promotion();
 
         Category category = new Category();
@@ -35,11 +35,15 @@ public class PromotionController {
 
         promotion.setMarketAdmin(marketAdmin);
         promotion.setPercentage(percentage);
-        promotion.setLoyaltyPts(loyaltyPts);
+        promotion.setLoyaltyPts(this.calculateLoyaltyPts(percentage));
         promotion.setAvUntile(avUntil);
         promotion.setCategory(category);
         promotion.setStatus("not-treated");
 
         new PromotionDao().save(promotion);
+    }
+
+    private Integer calculateLoyaltyPts(Double percentage){
+        return (int)((percentage*50)/5);
     }
 }

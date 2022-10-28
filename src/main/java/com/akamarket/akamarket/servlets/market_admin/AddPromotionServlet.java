@@ -11,6 +11,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @WebServlet(name = "AddPromotionServlet", value = "/market-admin/add-promotion")
 public class AddPromotionServlet extends HttpServlet {
@@ -31,12 +33,28 @@ public class AddPromotionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int categoryId = Integer.valueOf(request.getParameter("category_id"));
         Double percentage = Double.valueOf(request.getParameter("percentage"));
-        int loyaltyPts = Integer.valueOf(request.getParameter("loyalty_pts"));
         Date avUntil = Date.valueOf(request.getParameter("av_until"));
         MarketAdmin marketAdmin = (MarketAdmin) request.getSession().getAttribute("person");
 
+        HashMap<String,String> errors = new HashMap<>();
+
+        if(percentage > 50){
+            errors.put("percentage_err","Discount should be less than or equal to 50%!");
+        }
+
+        if(new CategoryDao().get(categoryId).getCategoryName().equalsIgnoreCase("multimedia") && percentage > 20){
+            errors.put("percentage_err","Discount should be less than or equal to 20% for multimedia category!");
+            return;
+        }
+
+        if (!errors.isEmpty()) {
+            request.setAttribute("categories",new CategoryDao().getAll());
+            request.setAttribute("errors",errors);
+            request.getRequestDispatcher("/market.admin/addpromotion.jsp").forward(request,response);
+        }
+
         try{
-            new PromotionController().addPromotion(marketAdmin,categoryId,percentage,loyaltyPts,avUntil);
+            new PromotionController().addPromotion(marketAdmin,categoryId,percentage,avUntil);
         }catch (Exception e){
             e.printStackTrace();
         }
