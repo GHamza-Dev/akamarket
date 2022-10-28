@@ -82,6 +82,14 @@ public class DepartementManager {
         return result;
     }
 
+    public Market getMarket() {
+        return market;
+    }
+
+    public void setMarket(Market market) {
+        this.market = market;
+    }
+
     public Category getCategory() {
         return category;
     }
