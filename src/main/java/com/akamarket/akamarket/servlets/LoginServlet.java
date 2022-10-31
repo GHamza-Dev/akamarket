@@ -11,6 +11,13 @@ import java.io.IOException;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
+
+    private String url;
+
+    @Override
+    public void init() throws ServletException {
+        this.url = getServletContext().getInitParameter("url");
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("index.jsp");
@@ -28,16 +35,21 @@ public class LoginServlet extends HttpServlet {
         }
 
         Class clazz = null;
+        String toServlet = "";
 
-        if (roleInput.equals("mkt-admin")) clazz = MarketAdmin.class;
-        else if (roleInput.equals("dept-admin")) clazz = DepartementManager.class;
-        else {
+        if (roleInput.equals("mkt-admin")) {
+            clazz = MarketAdmin.class;
+            toServlet = "market-admin/home";
+        } else if (roleInput.equals("dept-admin")) {
+            clazz = DepartementManager.class;
+            toServlet = "dept-admin/home";
+        } else {
             response.sendRedirect("index.jsp");
             return;
         }
-
         if (Auth.authenticate(email,password,clazz,request.getSession())) {
             System.out.println("Logged in...");
+            response.sendRedirect(toServlet);
         }else {
             response.sendRedirect("index.jsp");
         }
