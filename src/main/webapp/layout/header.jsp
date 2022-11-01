@@ -21,7 +21,7 @@
             <%@ include file="/inc/dept.admin/aside.jsp" %>
         <% } %>
         <div class="flex-auto w-full">
-        <nav class="h-16 bg-[#F9FAFB] flex items-center m-3 rounded-lg justify-between">
+        <nav class="h-16 bg-gray-100 flex items-center m-3 rounded-lg justify-between">
             <div>
                 <c:choose>
                     <c:when test="${param.sectionTitle != null}">
