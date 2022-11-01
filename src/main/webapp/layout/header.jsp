@@ -15,7 +15,7 @@
 <div class="flex min-h-screen">
         <% if(Auth.role(session).equals("ADMIN")){ %>
             <%@ include file="/inc/admin/aside.jsp" %>
-        <% }else if(Auth.role(session).equals("ADMIN")){ %>
+        <% }else if(Auth.role(session).equals("MARKETADMIN")){ %>
             <%@ include file="/inc/market.admin/aside.jsp" %>
         <% }else{ %>
             <%@ include file="/inc/dept.admin/aside.jsp" %>
