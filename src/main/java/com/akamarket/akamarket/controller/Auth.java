@@ -34,4 +34,8 @@ public class Auth {
     public static <D> D auth(HttpSession session){
         return (D)session.getAttribute("person");
     }
+
+    public static void kill(HttpSession session){
+        session.invalidate();
+    }
 }
