@@ -1,4 +1,7 @@
 <%@ page import="com.akamarket.akamarket.controller.Auth" %>
+<%@ page import="com.akamarket.akamarket.entity.MarketAdmin" %>
+<%@ page import="com.akamarket.akamarket.entity.SuperAdmin" %>
+<%@ page import="com.akamarket.akamarket.entity.DepartementManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -31,15 +34,17 @@
                         <h2 class="title ml-4 text-xl">${sectionTitle}</h2>
                     </c:when>
                     <c:otherwise>
-                        <h2 class="title ml-4 text-xl">[SECTION TITLE]</h2>
+                        <h2 class="title ml-4 text-gray-300"></h2>
                     </c:otherwise>
                 </c:choose>
             </div>
-            <button x-data="{open:false}" @click="open = !open" class="">
-                <%= Auth.role(session) %>
-                <div x-show="open">
-                    only when opened!!!!
-                </div>
+            <button x-data="{open:false}" @click="open = !open" class="flex items-center mr-2 bg-gray-50 p-2 rounded-full">
+                <span class="uppercase font-semibold mr-1 transition-all" x-show="open">
+                    <%=  Auth.role(session).equals("ADMIN") ? Auth.<SuperAdmin>auth(session).getUsername() : Auth.role(session).equals("MARKETADMIN") ? Auth.<MarketAdmin>auth(session).getUsername() : Auth.<DepartementManager>auth(session).getUsername() %>
+                </span>
+                <span class="w-11 block">
+                    <img src="<%=url%>assets/user.png" class="w-full">
+                </span>
             </button>
         </nav>
         <div class="m-3">
