@@ -32,9 +32,10 @@
         </td>
         <td class="py-3 px-6 text-center">
           <div class="flex item-center justify-center">
-            <form class="m-0">
-              <button class="w-4 mr-2 text-2xl text-purple-600 transform hover:text-blue-500 hover:scale-110">
+            <form class="m-0" action="<%=url+"dept-admin/promotions"%>" method="post">
+              <button name="request-for" value="show" class="w-4 mr-2 text-2xl text-purple-600 transform hover:text-blue-500 hover:scale-110">
                 <i class="fa-solid fa-clipboard"></i>
+                <input name="promotion-id" value="${promotion.getId()}" hidden>
               </button>
             </form>
           </div>
