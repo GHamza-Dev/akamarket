@@ -32,17 +32,17 @@
         </td>
         <td class="py-3 px-6 text-center">
           <div class="flex item-center justify-center">
-            <form>
+            <form class="m-0">
               <button class="w-4 mr-2 text-blue-600 transform hover:text-purple-500 hover:scale-110">
                 <i class="fa-solid fa-eye"></i>
               </button>
             </form>
-            <form>
+            <form class="m-0">
               <button type="button" class="w-4 mr-2 text-green-600 transform hover:text-purple-500 hover:scale-110">
                 <i class="fa-solid fa-pen-to-square"></i>
               </button>
             </form>
-            <form>
+            <form class="m-0">
               <button type="button" class="w-4 mr-2 text-red-600 transform hover:text-purple-500 hover:scale-110 disabled">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
