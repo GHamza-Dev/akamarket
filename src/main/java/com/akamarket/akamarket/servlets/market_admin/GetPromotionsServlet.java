@@ -1,17 +1,12 @@
 package com.akamarket.akamarket.servlets.market_admin;
 
-import com.akamarket.akamarket.dao.CategoryDao;
 import com.akamarket.akamarket.dao.MarketAdminDao;
-import com.akamarket.akamarket.dao.PromotionDao;
 import com.akamarket.akamarket.entity.MarketAdmin;
-import com.akamarket.akamarket.entity.Promotion;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet(name = "GetPromotionsServlet", value = "/market-admin/promotions")
 public class GetPromotionsServlet extends HttpServlet {
