@@ -32,8 +32,8 @@
         </td>
         <td class="py-3 px-6 text-center">
           <div class="flex item-center justify-center">
-            <form class="m-0">
-              <button class="w-4 mr-2 text-blue-600 transform hover:text-purple-500 hover:scale-110">
+            <form action="<%=url+"market-admin/promotion"%>" method="post" class="m-0">
+              <button name="promotion-id" value="${promotion.getId()}" class="w-4 mr-2 text-blue-600 transform hover:text-purple-500 hover:scale-110">
                 <i class="fa-solid fa-eye"></i>
               </button>
             </form>
