@@ -48,12 +48,15 @@ public class AddPromotionServlet extends HttpServlet {
             request.setAttribute("categories",new CategoryDao().getAll());
             request.setAttribute("errors",errors);
             request.getRequestDispatcher("/market.admin/addpromotion.jsp").forward(request,response);
+            return;
         }
 
         try{
             new PromotionController().addPromotion(marketAdmin,categoryId,percentage,avUntil);
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            response.sendRedirect(url+"market-admin/promotions");
         }
     }
 }
