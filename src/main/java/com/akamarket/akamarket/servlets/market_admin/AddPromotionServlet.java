@@ -2,16 +2,13 @@ package com.akamarket.akamarket.servlets.market_admin;
 
 import com.akamarket.akamarket.controller.PromotionController;
 import com.akamarket.akamarket.dao.CategoryDao;
-import com.akamarket.akamarket.dao.PromotionDao;
 import com.akamarket.akamarket.entity.MarketAdmin;
-import com.akamarket.akamarket.entity.Promotion;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @WebServlet(name = "AddPromotionServlet", value = "/market-admin/add-promotion")
