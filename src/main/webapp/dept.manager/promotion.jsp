@@ -13,8 +13,11 @@
         <div class="text-lg bg-gray-50 p-3 rounded-md flex items-center justify-between"><span class="text-gray-800 flex items-center"><i class="mx-2 fa-solid fa-calendar-days"></i> <p class="font-semibold">Available until:</p></span> <p class="text-gray-600"> 05/06/2022</p></div>
         <div class="text-lg bg-gray-50 p-3 rounded-md flex items-center justify-between"><span class="text-gray-800 flex items-center"><i class="mx-2 fa-sharp fa-solid fa-circle-check"></i> <p class="font-semibold">Loyalty points:</p></span> <p class="text-gray-600"> 40</p></div>
     </div>
-    <div>
+    <div class="relative bg-gray-50 rounded-md py-1 px-3 mt-3">
         <h1 class="text-xl font-semibold text-gray-500 mb-5 text-lg mt-4">Decision</h1>
+        <c:if test='${!promotion.getStatus().equals("pending")}'>
+            <div class="absolute w-full h-full backdrop-blur-sm rounded-md"></div>
+        </c:if>
         <div>
             <form action="<%=url+"dept-admin/promotions"%>" method="post" x-data="{decision:null}">
                 <input name="promotion-id" value="${promotion.getId()}" hidden>

@@ -61,6 +61,11 @@ public class PromotionServlet extends HttpServlet {
 
             PromotionDao promotionDao = new PromotionDao();
             Promotion promotion = promotionDao.get(Integer.valueOf(pId));
+
+            if (!promotion.getStatus().equals("pending")) {
+                return;
+            }
+
             promotionDao.update(promotion,setters);
 
             request.getRequestDispatcher("/dept.manager/promotions.jsp").forward(request,response);
