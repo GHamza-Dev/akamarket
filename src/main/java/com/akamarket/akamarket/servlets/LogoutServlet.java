@@ -1,6 +1,7 @@
 package com.akamarket.akamarket.servlets;
 
 import com.akamarket.akamarket.controller.Auth;
+import com.akamarket.akamarket.helper.UserAction;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -11,11 +12,8 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserAction.onLogout(request,response);
         Auth.kill(request.getSession());
-        response.setHeader("Cache-Control","no-cache");
-        response.setHeader("Cache-Control","no-store");
-        response.setHeader("Pragma","no-cache");
-        response.setDateHeader ("Expires", 0);
         response.sendRedirect("index.jsp");
     }
 }

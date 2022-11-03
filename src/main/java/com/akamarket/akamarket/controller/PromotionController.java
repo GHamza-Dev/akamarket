@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
 
 public class PromotionController {
 
+    public void setToNotTreated(DepartementManager deptManager){
+        int categoryId = deptManager.getCategory().getId();
+        int marketAdminId = deptManager.getMarket().getMarketAdmin().getId();
+        new PromotionDao().setStatusToNotTreated(categoryId,marketAdminId);
+    }
     public List<Promotion> getDeptManagerPromotions(DepartementManager deptManager){
         int deptManagerId = deptManager.getId();
         MarketAdmin marketAdmin = new DeptManagerDao().get(deptManagerId).getMarket().getMarketAdmin();
