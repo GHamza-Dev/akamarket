@@ -2,6 +2,8 @@ package com.akamarket.akamarket.dao;
 
 import com.akamarket.akamarket.entity.Promotion;
 import com.akamarket.akamarket.helper.JPA;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 
 import java.util.List;
@@ -36,6 +38,22 @@ public class PromotionDao implements Dao<Promotion>{
             setters[i].accept(promotion);
         }
         JPA.wrap(entityManager -> entityManager.merge(promotion));
+    }
+
+    public void setStatusToNotTreated(int categoryId,int marketAdminId){
+        EntityManager em = JPA.entityManager();
+        EntityTransaction tx = em.getTransaction();
+        Query query = em.createQuery("UPDATE Promotion p SET p.status = 'not-treated' WHERE p.status = 'pending' AND p.category.id ='"+categoryId+"' AND p.marketAdmin.id = '"+marketAdminId+"'");
+        try {
+            tx.begin();
+            query.executeUpdate();
+            tx.commit();
+        }catch (RuntimeException re){
+            tx.rollback();
+            throw re;
+        }finally {
+            em.close();
+        }
     }
     @Override
     public void delete(Promotion promotion) {
