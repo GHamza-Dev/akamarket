@@ -1,7 +1,9 @@
 package com.akamarket.akamarket.filters;
+import com.akamarket.akamarket.controller.Auth;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -9,13 +11,26 @@ import java.util.Enumeration;
 @WebFilter("/*")
 public class RootFilter implements Filter {
     private static int nbrOfRequests = 0;
+    private String url;
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        Filter.super.init(filterConfig);
+        this.url = filterConfig.getServletContext().getInitParameter("url");
+    }
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
         doLog(request);
 
-        if(((HttpServletRequest)(request)).getSession().getAttribute("person") == null){
-            filterChain.doFilter(request, response);
+        String requestedUrl = ((HttpServletRequest)request).getRequestURL().toString();
+        String loginPageUrl = this.url+"index.jsp";
+        String loginServletUrl = this.url+"login";
+
+        if(Auth.auth(((HttpServletRequest)(request)).getSession()) == null && !loginPageUrl.equals(requestedUrl) && !loginServletUrl.equals(requestedUrl)){
+            ((HttpServletResponse)response).sendRedirect("index.jsp");
+            System.out.println("Unauthenticated...");
             return;
         }
 
