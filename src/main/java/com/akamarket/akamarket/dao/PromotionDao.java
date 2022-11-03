@@ -5,7 +5,6 @@ import com.akamarket.akamarket.helper.JPA;
 import jakarta.persistence.Query;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class PromotionDao implements Dao<Promotion>{
@@ -38,7 +37,6 @@ public class PromotionDao implements Dao<Promotion>{
         }
         JPA.wrap(entityManager -> entityManager.merge(promotion));
     }
-
     @Override
     public void delete(Promotion promotion) {
         JPA.wrap(entityManager -> entityManager.remove(promotion));

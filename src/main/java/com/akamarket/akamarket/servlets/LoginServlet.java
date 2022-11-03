@@ -3,6 +3,7 @@ package com.akamarket.akamarket.servlets;
 import com.akamarket.akamarket.controller.Auth;
 import com.akamarket.akamarket.entity.DepartementManager;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.helper.UserAction;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -48,7 +49,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         if (Auth.authenticate(email,password,clazz,request.getSession())) {
-            System.out.println("Logged in...");
+            UserAction.onLoginSuccess(request,response);
             response.sendRedirect(toServlet);
         }else {
             response.sendRedirect("index.jsp");

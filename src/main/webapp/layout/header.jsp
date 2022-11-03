@@ -40,7 +40,7 @@
             </div>
             <button x-data="{open:false}" @click="open = !open" class="flex items-center mr-2 bg-gray-50 p-2 rounded-full">
                 <span class="uppercase font-semibold mr-1 transition-all" x-show="open">
-                    <%=  Auth.role(session).equals("ADMIN") ? Auth.<SuperAdmin>auth(session).getUsername() : Auth.role(session).equals("MARKETADMIN") ? Auth.<MarketAdmin>auth(session).getUsername() : Auth.<DepartementManager>auth(session).getUsername() %>
+                    <%=  Auth.role(session).equals("SUPERADMIN") ? Auth.<SuperAdmin>auth(session).getUsername() : Auth.role(session).equals("MARKETADMIN") ? Auth.<MarketAdmin>auth(session).getUsername() : Auth.<DepartementManager>auth(session).getUsername() %>
                 </span>
                 <span class="w-11 block">
                     <img src="<%=url%>assets/user.png" class="w-full">

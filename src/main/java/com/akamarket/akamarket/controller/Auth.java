@@ -1,15 +1,7 @@
 package com.akamarket.akamarket.controller;
 
 import com.akamarket.akamarket.dao.Authenticatable;
-import com.akamarket.akamarket.dao.Dao;
-import com.akamarket.akamarket.dao.MarketAdminDao;
-import com.akamarket.akamarket.dao.MarketDao;
-import com.akamarket.akamarket.entity.MarketAdmin;
 import jakarta.servlet.http.HttpSession;
-import org.hibernate.Session;
-
-import java.util.Objects;
-
 public class Auth {
     public static<D> boolean authenticate(String email,String password, Class<D> clazz, HttpSession session){
 

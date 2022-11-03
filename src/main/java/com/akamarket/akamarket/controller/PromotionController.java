@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PromotionController {
-
     public List<Promotion> getDeptManagerPromotions(DepartementManager deptManager){
         int deptManagerId = deptManager.getId();
         MarketAdmin marketAdmin = new DeptManagerDao().get(deptManagerId).getMarket().getMarketAdmin();
