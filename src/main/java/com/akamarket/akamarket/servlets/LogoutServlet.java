@@ -12,8 +12,8 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserAction.onLogout(request,response);
         Auth.kill(request.getSession());
-        UserAction.onLogoutSuccess(response);
         response.sendRedirect("index.jsp");
     }
 }
