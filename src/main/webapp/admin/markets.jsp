@@ -1,6 +1,11 @@
 <%@ include file="/layout/header.jsp" %>
 <div>
-  <h1 class="text-xl font-semibold text-blue-400 mb-5 text-2xl">Markets List</h1>
+  <div class="flex justify-between items-center my-5">
+    <h1 class="text-xl font-semibold text-blue-400 text-2xl">Markets List</h1>
+    <a href="<%=url+"admin/add-market-form"%>" class="h-12 w-32 rounded-lg bg-blue-200 font-semibold text-gray-600 shadow flex items-center justify-center">
+      <span>Add Market <i class="fa-solid fa-cart-plus"></i></span>
+    </a>
+  </div>
   <table class="w-full rounded-md overflow-hidden">
     <thead>
     <tr class="bg-blue-50">
