@@ -7,7 +7,7 @@
 <body>
 <h1><%= "Admin login" %></h1>
 
-<form action="admin/login" method="post">
+<form action="admin-login" method="post">
   <input name="email" type="email" placeholder="Enter you email...">
   <input name="password" type="password" placeholder="Enter your password...">
   <input hidden name="role" type="radio" value="admin">

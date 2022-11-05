@@ -27,12 +27,21 @@ public class RootFilter implements Filter {
         String requestedUrl = ((HttpServletRequest)request).getRequestURL().toString();
         String loginPageUrl = this.url+"index.jsp";
         String loginServletUrl = this.url+"login";
+        String sAdminPageUrl = this.url+"admin.login.jsp";
+        String sAdminServletUrl = this.url+"admin-login";
 
-        if(Auth.auth(((HttpServletRequest)(request)).getSession()) == null && !loginPageUrl.equals(requestedUrl) && !loginServletUrl.equals(requestedUrl)){
+        if(Auth.auth(((HttpServletRequest)(request)).getSession()) == null
+                && !loginPageUrl.equals(requestedUrl)
+                && !loginServletUrl.equals(requestedUrl)
+                && !sAdminPageUrl.equals(requestedUrl)
+                && !sAdminServletUrl.equals(requestedUrl)
+        ){
             ((HttpServletResponse)response).sendRedirect("index.jsp");
             System.out.println("Unauthenticated...");
             return;
         }
+
+        doPreventCache((HttpServletResponse) response);
 
         filterChain.doFilter(request, response);
     }
@@ -52,5 +61,12 @@ public class RootFilter implements Filter {
             System.out.println("\t["+nbrOfParams+"] "+ parameterName +" = "+ request.getParameter(parameterName));
         }
         System.out.println("[REQUEST END #"+nbrOfRequests+"]");
+    }
+
+    private void doPreventCache(HttpServletResponse response){
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
     }
 }

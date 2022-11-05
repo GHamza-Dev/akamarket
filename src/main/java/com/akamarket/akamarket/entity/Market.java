@@ -13,6 +13,10 @@ public class Market {
     @Basic
     @Column(name = "city", nullable = true, length = 50)
     private String city;
+
+    @Basic
+    @Column(name = "address", nullable = true, length = 50)
+    private String address;
     @OneToOne(mappedBy = "market")
     private MarketAdmin marketAdmin;
 
@@ -53,6 +57,22 @@ public class Market {
         int result = id;
         result = 31 * result + (city != null ? city.hashCode() : 0);
         return result;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Collection<DepartementManager> getDepartementManagers() {
+        return departementManagers;
+    }
+
+    public void setDepartementManagers(Collection<DepartementManager> departementManagers) {
+        this.departementManagers = departementManagers;
     }
 
     public MarketAdmin getMarketAdmin() {
