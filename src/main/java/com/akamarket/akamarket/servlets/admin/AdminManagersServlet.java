@@ -2,8 +2,10 @@ package com.akamarket.akamarket.servlets.admin;
 
 import com.akamarket.akamarket.controller.MarketAdminController;
 import com.akamarket.akamarket.controller.MarketController;
+import com.akamarket.akamarket.dao.MarketAdminDao;
 import com.akamarket.akamarket.dao.MarketDao;
 import com.akamarket.akamarket.entity.Market;
+import com.akamarket.akamarket.entity.MarketAdmin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -25,9 +27,10 @@ public class AdminManagersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String requestedUrl = request.getRequestURL().toString();
 
-        if(requestedUrl.equals(this.url+"admin/dept-managers")){
-
-            request.getRequestDispatcher("/admin/markets.jsp").forward(request,response);
+        if(requestedUrl.equals(this.url+"admin/managers")){
+            List<MarketAdmin> marketAdmins = new MarketAdminDao().getAll();
+            request.setAttribute("managers",marketAdmins);
+            request.getRequestDispatcher("/admin/managers.jsp").forward(request,response);
         } else if (requestedUrl.equals(this.url+"admin/add-manager-form")) {
             List<Market> markets = MarketController.getMarketsWithNoAdmin();
             request.setAttribute("markets",markets);
