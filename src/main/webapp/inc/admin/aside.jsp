@@ -1,8 +1,8 @@
 <aside class="w-64 flex-2 min-h-screen bg-gray-50" aria-label="Sidebar">
     <div class="overflow-y-auto py-3 px-3 bg-gray-50 rounded dark:bg-gray-800">
-        <a href="#" class="flex items-center pl-2.5 mb-5 justify-center bg-gray-100 rounded-md">
-            <div class="w-11">
-                <img src="<%=url%>assets/logo.png" class="w-full">
+        <a href="#" class="flex items-center mb-5 h-16 justify-center bg-gray-100 rounded-md">
+            <div class="w-24">
+                <img src="<%=url%>assets/logo_marjane.svg" class="w-full">
             </div>
         </a>
         <ul class="space-y-2">
