@@ -1,6 +1,6 @@
 <%@ include file="/layout/header.jsp" %>
 <div>
-  <h1 class="text-xl font-semibold text-blue-400 mb-5 text-2xl">Promotions</h1>
+  <h1 class="text-xl font-semibold text-blue-800 mb-5 text-2xl">Promotions</h1>
   <table class="w-full rounded-md overflow-hidden">
     <thead>
     <tr class="bg-blue-50">

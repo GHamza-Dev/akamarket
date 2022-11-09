@@ -1,9 +1,9 @@
 <%@ include file="/layout/header.jsp" %>
 <div>
   <div class="flex justify-between items-center my-5">
-    <h1 class="text-xl font-semibold text-blue-400 text-2xl">Market managers list</h1>
-    <a href="<%=url+"admin/add-manager-form"%>" class="h-12 w-34 rounded-lg bg-blue-200 font-semibold text-gray-600 shadow flex items-center justify-center px-2">
-      <span>Add manager <i class="fa-solid fa-user-plus"></i></span>
+    <h1 class="text-xl font-semibold text-blue-800 text-2xl">Managers</h1>
+    <a href="<%=url+"admin/add-manager-form"%>" class="h-12 w-34 rounded-lg bg-blue-200 font-semibold text-gray-600 flex items-center justify-center px-2">
+      <span class="text-blue-800">Add manager <i class="text-blue-800 fa-solid fa-user-plus"></i></span>
     </a>
   </div>
   <table class="w-full rounded-md overflow-hidden">

@@ -15,7 +15,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-<div class="flex min-h-screen">
+<div class="flex min-h-screen bg-[#fafafa]">
         <% if(Auth.role(session).equals("SUPERADMIN")){ %>
             <%@ include file="/inc/admin/aside.jsp" %>
         <% }else if(Auth.role(session).equals("MARKETADMIN")){ %>
@@ -24,7 +24,7 @@
             <%@ include file="/inc/dept.admin/aside.jsp" %>
         <% } %>
         <div class="flex-auto w-full">
-        <nav class="h-16 bg-gray-100 flex items-center m-3 rounded-lg justify-between">
+        <nav class="h-16 bg-gray-100 drop-shadow-md flex items-center m-3 rounded-lg justify-between">
             <div>
                 <c:choose>
                     <c:when test="${param.sectionTitle != null}">

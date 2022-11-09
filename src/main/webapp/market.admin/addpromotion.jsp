@@ -1,6 +1,6 @@
 <%@ include file="/layout/header.jsp" %>
 <div class="mx-auto w-full">
-    <h1 class="text-xl font-semibold text-blue-400 mb-5 text-2xl">Add promotion</h1>
+    <h1 class="text-xl font-semibold text-blue-800 mb-5 text-2xl">Add promotion</h1>
     <form action="<%=url%>market-admin/add-promotion" method="post">
         <div class="-mx-3 flex flex-wrap">
             <div class="w-full px-3 sm:w-1/2">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="flex justify-end">
-            <button class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button class="hover:shadow-form rounded-md bg-blue-800 py-3 px-8 text-center text-base font-semibold text-yellow-300 outline-none">
                 Confirm
             </button>
         </div>

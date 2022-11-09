@@ -1,6 +1,6 @@
 <%@ include file="/layout/header.jsp" %>
-<h1 class="text-xl font-semibold text-blue-400 text-2xl">Add Market Manager</h1>
-<div class="bg-gray-50 mx-auto p-6 rounded-md mt-4">
+<h1 class="text-xl font-semibold text-blue-800 text-2xl">Add Manager</h1>
+<div class="bg-gray-50 mx-auto p-6 rounded-md mt-4 border border-blue-100">
     <form action="<%=url+"admin/add-manager"%>" method="post">
         <div class="flex item-center gap-3">
             <div class="border p-2 h-12 relative flex-1 overflow-hidden rounded-md">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="flex items-center justify-end mt-4">
-            <button class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button class="hover:shadow-form rounded-md bg-blue-800 py-3 px-8 text-center text-base font-semibold text-yellow-300 outline-none">
                 Submit
             </button>
         </div>

@@ -34,7 +34,7 @@ public class AdminManagersServlet extends HttpServlet {
         } else if (requestedUrl.equals(this.url+"admin/add-manager-form")) {
             List<Market> markets = MarketController.getMarketsWithNoAdmin();
             request.setAttribute("markets",markets);
-            request.getRequestDispatcher("/admin/add.dept.manager.jsp").forward(request,response);
+            request.getRequestDispatcher("/admin/add.manager.jsp").forward(request,response);
         }
     }
 
