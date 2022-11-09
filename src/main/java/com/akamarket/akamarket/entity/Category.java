@@ -18,8 +18,8 @@ public class Category {
     private Category parent;
     @OneToMany(mappedBy = "parent")
     private Collection<Category> categories;
-    @OneToOne(mappedBy = "category")
-    private DepartementManager departementManager;
+    @OneToMany(mappedBy = "category")
+    private Collection<DepartementManager> departementManager;
     @OneToMany(mappedBy = "category")
     private Collection<Promotion> promotions;
 
@@ -75,12 +75,12 @@ public class Category {
         this.categories = categoriesById;
     }
 
-    public DepartementManager getDepartementManagers() {
+    public Collection<DepartementManager> getDepartementManagers() {
         return departementManager;
     }
 
-    public void setDepartementManagers(DepartementManager departementManager) {
-        this.departementManager = departementManager;
+    public void setDepartementManagers(Collection<DepartementManager> departmentManager) {
+        this.departementManager = departmentManager;
     }
 
     public Collection<Promotion> getPromotions() {

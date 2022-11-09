@@ -18,7 +18,7 @@ public class DepartementManager {
     @Basic
     @Column(name = "password", nullable = false, length = 50)
     private String password;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
