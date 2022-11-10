@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSP - Admin login</title>
+  <title>Marjane | Admin login</title>
 </head>
 <body>
 <h1><%= "Admin login" %></h1>
