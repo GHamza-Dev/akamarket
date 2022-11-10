@@ -3,10 +3,11 @@ package com.akamarket.akamarket.controller;
 import com.akamarket.akamarket.dao.DeptManagerDao;
 import com.akamarket.akamarket.entity.Category;
 import com.akamarket.akamarket.entity.DepartementManager;
+import com.akamarket.akamarket.entity.Market;
 import com.akamarket.akamarket.helper.Mail;
 
 public class DeptManagerController {
-    public static void addDeptManager(String email,String username,int categoryId){
+    public static void addDeptManager(String email, String username, int categoryId, Market market){
         DepartementManager deptManager = new DepartementManager();
         Category category = new Category();
         category.setId(categoryId);
@@ -16,6 +17,8 @@ public class DeptManagerController {
         deptManager.setPassword("1234");
 
         deptManager.setCategory(category);
+        deptManager.setMarket(market);
+
 
         new DeptManagerDao().save(deptManager);
 

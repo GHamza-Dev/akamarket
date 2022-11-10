@@ -1,8 +1,11 @@
 package com.akamarket.akamarket.servlets.market_admin;
 
+import com.akamarket.akamarket.controller.Auth;
 import com.akamarket.akamarket.controller.DeptManagerController;
 import com.akamarket.akamarket.dao.CategoryDao;
 import com.akamarket.akamarket.entity.Category;
+import com.akamarket.akamarket.entity.Market;
+import com.akamarket.akamarket.entity.MarketAdmin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -29,7 +32,10 @@ public class AddDeptManagerServlet extends HttpServlet {
             return;
         }
 
-        DeptManagerController.addDeptManager(email,username,Integer.valueOf(category_id));
+        MarketAdmin marketAdmin = Auth.auth(request.getSession());
+        Market market = marketAdmin.getMarket();
+
+        DeptManagerController.addDeptManager(email,username,Integer.valueOf(category_id),market);
         this.doGet(request,response);
     }
 }
