@@ -19,6 +19,9 @@ public class Auth {
     }
 
     public static String role(HttpSession session){
+
+        if(session.getAttribute("role") == null) return "";
+
         String strRole = session.getAttribute("role").toString();
         return strRole.substring(strRole.lastIndexOf(".")+1).toUpperCase();
     }
