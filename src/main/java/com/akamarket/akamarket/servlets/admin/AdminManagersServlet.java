@@ -49,5 +49,6 @@ public class AdminManagersServlet extends HttpServlet {
         }
 
         MarketAdminController.addMarketAdmin(username,email,Integer.valueOf(market_id));
+        response.sendRedirect(this.url+"admin/managers");
     }
 }
