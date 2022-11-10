@@ -26,7 +26,7 @@
         <td class="p-3">${promotion.getDeptmanagercomment()}</td>
         <td class="p-3">${promotion.getCategory().getCategoryName()}</td>
         <td class="p-3" x-data="{status: '${promotion.getStatus()}'}">
-          <div x-bind:class="status == 'refused' ? 'bg-red-100 text-red-600' : status == 'accepted' ? 'bg-green-100 text-green-600 animate-pulse' : status == 'pending' ? 'bg-blue-100 text-blue-600' : 'bg-[#d8b4fe] text-[#6b21a8]'" class="rounded-full px-4 py-1 text-center w-fit font-normal">
+          <div x-bind:class="status == 'refused' ? 'bg-red-100 text-red-600' : status == 'accepted' ? 'bg-green-100 text-green-600' : status == 'pending' ? 'bg-blue-100 text-blue-600 animate-pulse' : 'bg-[#d8b4fe] text-[#6b21a8]'" class="rounded-full px-4 py-1 text-center w-fit font-normal">
               ${promotion.getStatus()}
           </div>
         </td>
