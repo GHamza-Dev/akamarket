@@ -1,7 +1,12 @@
 <%@ include file="/layout/header.jsp" %>
+<script defer>
+  $(document).ready(function () {
+    $('#promotions').DataTable();
+  });
+</script>
 <div>
   <h1 class="text-xl font-semibold text-blue-800 mb-5 text-2xl">Promotions</h1>
-  <table class="w-full rounded-md overflow-hidden">
+  <table class="w-full rounded-md overflow-hidden" id="promotions">
     <thead>
     <tr class="bg-blue-50">
       <th class="p-4 font-semibold text-start">#</th>
