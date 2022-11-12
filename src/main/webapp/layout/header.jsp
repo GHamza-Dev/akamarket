@@ -2,6 +2,8 @@
 <%@ page import="com.akamarket.akamarket.entity.MarketAdmin" %>
 <%@ page import="com.akamarket.akamarket.entity.SuperAdmin" %>
 <%@ page import="com.akamarket.akamarket.entity.DepartementManager" %>
+<%@ page import="com.akamarket.akamarket.helper.AlertSession" %>
+<%@ page import="com.akamarket.akamarket.helper.Alert" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
@@ -16,6 +18,17 @@
 </head>
 <body>
 <div class="flex min-h-screen bg-[#fafafa]">
+
+        <% if (AlertSession.isSet(session)){ %>
+            <% Alert alert = AlertSession.alert(session); %>
+            <div x-data="{ open: true,type: '<%=alert.getType()%>' }" x-show="open" x-bind:class="type == 'error' ? 'bg-red-50 text-red-600' : type == 'success' ? 'bg-green-50 text-green-600' : 'bg-blue-50 text-blue-600' " class="border-current border rounded-md p-5 py-3 top-1 left-1/2 -translate-x-1/2 z-50 w-[450px] max-w-11/12 absolute">
+                <div class="flex items-center justify-between">
+                    <p><%=alert.getMessage()%></p>
+                    <span class="cursor-pointer" x-on:click="open = ! open"><i class="text-xl text-current fa-solid fa-circle-xmark"></i></span>
+                </div>
+            </div>
+        <% } %>
+
         <% if(Auth.role(session).equals("SUPERADMIN")){ %>
             <%@ include file="/inc/admin/aside.jsp" %>
         <% }else if(Auth.role(session).equals("MARKETADMIN")){ %>
