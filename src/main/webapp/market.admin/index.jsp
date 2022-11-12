@@ -1,3 +1,3 @@
 <%@ include file="/layout/header.jsp" %>
-  MARKET ADMIN HOME
+  <%@ include file="/coming.soon.jsp"%>
 <%@ include file="/layout/footer.jsp" %>
