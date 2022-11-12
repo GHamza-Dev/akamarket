@@ -3,6 +3,8 @@ package com.akamarket.akamarket.servlets.market_admin;
 import com.akamarket.akamarket.controller.PromotionController;
 import com.akamarket.akamarket.dao.CategoryDao;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.helper.Alert;
+import com.akamarket.akamarket.helper.AlertSession;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -53,7 +55,9 @@ public class AddPromotionServlet extends HttpServlet {
 
         try{
             new PromotionController().addPromotion(marketAdmin,categoryId,percentage,avUntil);
+            AlertSession.setAlert(new Alert("Promotion added successfully","success"),request.getSession());
         }catch (Exception e){
+            AlertSession.setAlert(new Alert("Oops something went wrong please try again!","error"),request.getSession());
             e.printStackTrace();
         }finally {
             response.sendRedirect(url+"market-admin/promotions");

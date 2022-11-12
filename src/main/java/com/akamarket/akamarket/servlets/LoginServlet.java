@@ -3,6 +3,8 @@ package com.akamarket.akamarket.servlets;
 import com.akamarket.akamarket.controller.Auth;
 import com.akamarket.akamarket.entity.DepartementManager;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.helper.Alert;
+import com.akamarket.akamarket.helper.AlertSession;
 import com.akamarket.akamarket.helper.UserAction;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -52,6 +54,7 @@ public class LoginServlet extends HttpServlet {
             UserAction.onLoginSuccess(request,response);
             response.sendRedirect(toServlet);
         }else {
+            AlertSession.setAlert(new Alert("Wrong username or password!","error"),request.getSession());
             response.sendRedirect("index.jsp");
         }
     }

@@ -6,6 +6,8 @@ import com.akamarket.akamarket.dao.MarketAdminDao;
 import com.akamarket.akamarket.dao.MarketDao;
 import com.akamarket.akamarket.entity.Market;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.helper.Alert;
+import com.akamarket.akamarket.helper.AlertSession;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -48,7 +50,17 @@ public class AdminManagersServlet extends HttpServlet {
             return;
         }
 
-        MarketAdminController.addMarketAdmin(username,email,Integer.valueOf(market_id));
-        response.sendRedirect(this.url+"admin/managers");
+
+
+        try{
+            MarketAdminController.addMarketAdmin(username,email,Integer.valueOf(market_id));
+            String link = "<a class='text-blue-600' href='"+this.url+"admin/managers'> visit managers?"+"</a>";
+            AlertSession.setAlert(new Alert("Manager added successfully: "+link,"success"),request.getSession());
+        }catch (Exception e){
+            AlertSession.setAlert(new Alert("Oops something went wrong please try again!","error"),request.getSession());
+            e.printStackTrace();
+        }finally {
+            response.sendRedirect(this.url+"admin/add-manager-form");
+        }
     }
 }

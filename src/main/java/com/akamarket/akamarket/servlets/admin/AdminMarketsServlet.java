@@ -3,6 +3,8 @@ package com.akamarket.akamarket.servlets.admin;
 import com.akamarket.akamarket.controller.MarketController;
 import com.akamarket.akamarket.dao.MarketDao;
 import com.akamarket.akamarket.entity.Market;
+import com.akamarket.akamarket.helper.Alert;
+import com.akamarket.akamarket.helper.AlertSession;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -58,7 +60,15 @@ public class AdminMarketsServlet extends HttpServlet {
             return;
         }
 
-        MarketController.addMarket(city,address);
-        response.sendRedirect(this.url+"admin/markets");
+        try{
+            MarketController.addMarket(city,address);
+            String link = "<a class='text-blue-600' href='"+this.url+"admin/markets'> visit markets list?"+"</a>";
+            AlertSession.setAlert(new Alert("Market added successfully: "+link,"success"),request.getSession());
+        }catch (Exception e){
+            AlertSession.setAlert(new Alert("Oops something went wrong please try again!","error"),request.getSession());
+            e.printStackTrace();
+        }finally {
+            response.sendRedirect(this.url+"admin/add-market-form");
+        }
     }
 }

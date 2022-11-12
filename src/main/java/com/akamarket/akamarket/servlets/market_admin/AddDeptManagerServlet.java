@@ -6,6 +6,8 @@ import com.akamarket.akamarket.dao.CategoryDao;
 import com.akamarket.akamarket.entity.Category;
 import com.akamarket.akamarket.entity.Market;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.helper.Alert;
+import com.akamarket.akamarket.helper.AlertSession;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -15,6 +17,13 @@ import java.util.List;
 
 @WebServlet(name = "AddDeptManagerServlet", value = "/market-admin/add-dept-manager")
 public class AddDeptManagerServlet extends HttpServlet {
+
+    private String url;
+
+    @Override
+    public void init() throws ServletException {
+        this.url = getServletContext().getInitParameter("url");
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> categories = new CategoryDao().getAll();
@@ -35,7 +44,15 @@ public class AddDeptManagerServlet extends HttpServlet {
         MarketAdmin marketAdmin = Auth.auth(request.getSession());
         Market market = marketAdmin.getMarket();
 
-        DeptManagerController.addDeptManager(email,username,Integer.valueOf(category_id),market);
-        this.doGet(request,response);
+        try{
+            DeptManagerController.addDeptManager(email,username,Integer.valueOf(category_id),market);
+            String link = "<a class='text-blue-600' href='"+this.url+"market-admin/dept-managers'> visit managers?"+"</a>";
+            AlertSession.setAlert(new Alert("Manager added successfully: "+link,"success"),request.getSession());
+        }catch (Exception e){
+            AlertSession.setAlert(new Alert("Oops something went wrong please try again!","error"),request.getSession());
+            e.printStackTrace();
+        }finally {
+            response.sendRedirect(this.url+"market-admin/add-dept-manager");
+        }
     }
 }

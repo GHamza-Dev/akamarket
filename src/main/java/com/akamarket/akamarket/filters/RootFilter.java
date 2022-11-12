@@ -36,6 +36,7 @@ public class RootFilter implements Filter {
                 && !sAdminPageUrl.equals(requestedUrl)
                 && !sAdminServletUrl.equals(requestedUrl)
                 && !requestedUrl.contains("assets")
+                && !requestedUrl.contains("node_modules")
         ){
             ((HttpServletResponse)response).sendRedirect("index.jsp");
             System.out.println("Unauthenticated...");
