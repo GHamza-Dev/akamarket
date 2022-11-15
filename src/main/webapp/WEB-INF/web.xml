@@ -5,6 +5,6 @@
          version="5.0">
     <context-param>
         <param-name>url</param-name>
-        <param-value>http://localhost:8080/akaMarket_war_exploded/</param-value>
+        <param-value>http://localhost:8080/marjane/</param-value>
     </context-param>
 </web-app>

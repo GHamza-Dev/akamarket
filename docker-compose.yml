@@ -1,0 +1,13 @@
+version: "3"
+services:
+  psql-db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=hamzaio
+      - POSTGRES_PASSWORD=hamzapass
+  marjane:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - psql-db

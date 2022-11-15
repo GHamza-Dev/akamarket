@@ -12,10 +12,10 @@
         <class>com.akamarket.akamarket.entity.Promotion</class>
         <class>com.akamarket.akamarket.entity.SuperAdmin</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/akamarket"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://psql-db/akamarket"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.username" value="postgres"/>
-            <property name="hibernate.connection.password" value="nopass"/>
+            <property name="hibernate.connection.username" value="hamzaio"/>
+            <property name="hibernate.connection.password" value="hamzapass"/>
             <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
