@@ -17,6 +17,7 @@
             <property name="hibernate.connection.username" value="hamzaio"/>
             <property name="hibernate.connection.password" value="hamzapass"/>
             <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
