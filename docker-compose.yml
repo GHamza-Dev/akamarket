@@ -5,6 +5,7 @@ services:
     environment:
       - POSTGRES_USER=hamzaio
       - POSTGRES_PASSWORD=hamzapass
+      - POSTGRES_DB=akamarket
   marjane:
     build: .
     ports:
