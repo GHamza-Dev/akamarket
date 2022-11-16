@@ -10,7 +10,7 @@
 <form action="admin-login" method="post">
   <input name="email" type="email" placeholder="Enter you email...">
   <input name="password" type="password" placeholder="Enter your password...">
-  <input hidden name="role" type="radio" value="admin">
+  <input hidden name="role" type="radio" checked value="admin">
   <button>Submit</button>
 </form>
 

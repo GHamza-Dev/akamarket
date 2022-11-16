@@ -3,6 +3,7 @@ package com.akamarket.akamarket.servlets;
 import com.akamarket.akamarket.controller.Auth;
 import com.akamarket.akamarket.entity.DepartementManager;
 import com.akamarket.akamarket.entity.MarketAdmin;
+import com.akamarket.akamarket.entity.SuperAdmin;
 import com.akamarket.akamarket.helper.Alert;
 import com.akamarket.akamarket.helper.AlertSession;
 import com.akamarket.akamarket.helper.UserAction;
@@ -46,6 +47,9 @@ public class LoginServlet extends HttpServlet {
         } else if (roleInput.equals("dept-admin")) {
             clazz = DepartementManager.class;
             toServlet = "dept-admin/home";
+        } else if (roleInput.equals("admin")) {
+            clazz = SuperAdmin.class;
+            toServlet = "admin/home";
         } else {
             response.sendRedirect("index.jsp");
             return;
